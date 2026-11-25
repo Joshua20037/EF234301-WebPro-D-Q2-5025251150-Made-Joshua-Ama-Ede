@@ -2,12 +2,12 @@
 -- PostgreSQL database dump
 --
 
-\restrict VoI5oiORpIxw5c2lhsAfgJBBrodW82PaoGX62wAPK3wlcozoEFr6YailBfV7jSk
+-- \restrict 7KFJsWKk2bFhVbHsogUMmMGXfWoaO1EQPXFOp7yUKF5gestMnml4PLL9f4ndByB
 
 -- Dumped from database version 18.0
 -- Dumped by pg_dump version 18.0
 
--- Started on 2026-11-25 11:18:20
+-- Started on 2026-11-25 11:46:32
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -551,9 +551,7 @@ ALTER TABLE ONLY public.users ALTER COLUMN id_user SET DEFAULT nextval('public.u
 -- Data for Name: dosen; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY public.dosen (id_dosen, id_user, nidn, nama, email, no_hp, alamat, id_jurusan) FROM stdin;
-1	\N	1234567890	Dosen 1	dosenif1@gmail.com	081234586457	Jl. abc	1
-\.
+INSERT INTO public.dosen VALUES (1, NULL, '1234567890', 'Dosen 1', 'dosenif1@gmail.com', '081234586457', 'Jl. abc', 1);
 
 
 --
@@ -562,9 +560,7 @@ COPY public.dosen (id_dosen, id_user, nidn, nama, email, no_hp, alamat, id_jurus
 -- Data for Name: jadwal; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY public.jadwal (id_jadwal, id_kelas, id_ruangan, hari, jam_mulai, jam_selesai) FROM stdin;
-1	1	4	Rabu	15:00:00	17:30:00
-\.
+INSERT INTO public.jadwal VALUES (1, 1, 4, 'Rabu', '15:00:00', '17:30:00');
 
 
 --
@@ -573,9 +569,7 @@ COPY public.jadwal (id_jadwal, id_kelas, id_ruangan, hari, jam_mulai, jam_selesa
 -- Data for Name: jurusan; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY public.jurusan (id_jurusan, kode, nama_jurusan, jenjang, ketua_jurusan) FROM stdin;
-1	IF	Teknik Informatika	S1	Pak X
-\.
+INSERT INTO public.jurusan VALUES (1, 'IF', 'Teknik Informatika', 'S1', 'Pak X');
 
 
 --
@@ -584,9 +578,7 @@ COPY public.jurusan (id_jurusan, kode, nama_jurusan, jenjang, ketua_jurusan) FRO
 -- Data for Name: kelas; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY public.kelas (id_kelas, nama_kelas, id_mk, id_dosen, tahun_ajaran, semester, kuota) FROM stdin;
-1	A	1	1	2026/2027	ganjil	30
-\.
+INSERT INTO public.kelas VALUES (1, 'A', 1, 1, '2026/2027', 'ganjil', 30);
 
 
 --
@@ -595,9 +587,7 @@ COPY public.kelas (id_kelas, nama_kelas, id_mk, id_dosen, tahun_ajaran, semester
 -- Data for Name: krs; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY public.krs (id_krs, id_mhs, id_kelas, tahun_ajaran, status) FROM stdin;
-2	3	1	2026/2027	disetujui
-\.
+INSERT INTO public.krs VALUES (2, 3, 1, '2026/2027', 'disetujui');
 
 
 --
@@ -606,9 +596,7 @@ COPY public.krs (id_krs, id_mhs, id_kelas, tahun_ajaran, status) FROM stdin;
 -- Data for Name: mahasiswa; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY public.mahasiswa (id_mhs, id_user, nim, nama, tgl_lahir, jenis_kelamin, alamat, angkatan, id_jurusan, id_dosen_wali, status) FROM stdin;
-3	7	5025251150	Made Joshua Ama Ede	2007-03-20	L	Jl. Arief Rahman Hakim, No. 110	2025	1	1	aktif
-\.
+INSERT INTO public.mahasiswa VALUES (3, 7, '5025251150', 'Made Joshua Ama Ede', '2007-03-20', 'L', 'Jl. Arief Rahman Hakim, No. 110', 2025, 1, 1, 'aktif');
 
 
 --
@@ -617,9 +605,7 @@ COPY public.mahasiswa (id_mhs, id_user, nim, nama, tgl_lahir, jenis_kelamin, ala
 -- Data for Name: mata_kuliah; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY public.mata_kuliah (id_mk, kode_mk, nama_mk, sks, semester, id_jurusan) FROM stdin;
-1	EF234041	Web Programming	3	3	1
-\.
+INSERT INTO public.mata_kuliah VALUES (1, 'EF234041', 'Web Programming', 3, 3, 1);
 
 
 --
@@ -628,9 +614,7 @@ COPY public.mata_kuliah (id_mk, kode_mk, nama_mk, sks, semester, id_jurusan) FRO
 -- Data for Name: nilai; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY public.nilai (id_nilai, id_krs, tugas, uts, uas, nilai_akhir, nilai_huruf) FROM stdin;
-2	2	100.00	70.00	80.00	83.00	B
-\.
+INSERT INTO public.nilai VALUES (2, 2, 100.00, 70.00, 80.00, 83.00, 'B');
 
 
 --
@@ -639,10 +623,8 @@ COPY public.nilai (id_nilai, id_krs, tugas, uts, uas, nilai_akhir, nilai_huruf) 
 -- Data for Name: ruangan; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY public.ruangan (id_ruangan, nama_ruangan, gedung, kapasitas, jenis) FROM stdin;
-4	IF-107	Gedung Teknik Informatika	30	lab
-6	IF-105	Gedung Teknik Informatika	100	kelas
-\.
+INSERT INTO public.ruangan VALUES (4, 'IF-107', 'Gedung Teknik Informatika', 30, 'lab');
+INSERT INTO public.ruangan VALUES (6, 'IF-105', 'Gedung Teknik Informatika', 100, 'kelas');
 
 
 --
@@ -651,12 +633,10 @@ COPY public.ruangan (id_ruangan, nama_ruangan, gedung, kapasitas, jenis) FROM st
 -- Data for Name: users; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY public.users (id_user, username, password_hash, role) FROM stdin;
-1	admin	e10adc3949ba59abbe56e057f20f883e	admin
-2	dosen1	e10adc3949ba59abbe56e057f20f883e	dosen
-3	mhs1	e10adc3949ba59abbe56e057f20f883e	mahasiswa
-7	5025251150	ab56b4d92b40713acc5af89985d4b786	mahasiswa
-\.
+INSERT INTO public.users VALUES (1, 'admin', 'e10adc3949ba59abbe56e057f20f883e', 'admin');
+INSERT INTO public.users VALUES (2, 'dosen1', 'e10adc3949ba59abbe56e057f20f883e', 'dosen');
+INSERT INTO public.users VALUES (3, 'mhs1', 'e10adc3949ba59abbe56e057f20f883e', 'mahasiswa');
+INSERT INTO public.users VALUES (7, '5025251150', 'ab56b4d92b40713acc5af89985d4b786', 'mahasiswa');
 
 
 --
@@ -1055,11 +1035,11 @@ ALTER TABLE ONLY public.nilai
     ADD CONSTRAINT nilai_id_krs_fkey FOREIGN KEY (id_krs) REFERENCES public.krs(id_krs) ON DELETE CASCADE;
 
 
--- Completed on 2026-11-25 11:18:20
+-- Completed on 2026-11-25 11:46:32
 
 --
 -- PostgreSQL database dump complete
 --
 
-\unrestrict VoI5oiORpIxw5c2lhsAfgJBBrodW82PaoGX62wAPK3wlcozoEFr6YailBfV7jSk
+-- \unrestrict 7KFJsWKk2bFhVbHsogUMmMGXfWoaO1EQPXFOp7yUKF5gestMnml4PLL9f4ndByB
 
